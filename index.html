@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crypto Wallet Scam Checker</title>
+</head>
+<body>
+  <h2>Check Wallet Address</h2>
+  <input type="text" id="wallet" placeholder="Enter wallet address" />
+  <button onclick="checkWallet()">Check</button>
+
+  <pre id="result"></pre>
+
+  <script>
+    async function checkWallet() {
+      const wallet = document.getElementById("wallet").value;
+      const response = await fetch(`http://127.0.0.1:5000/check?wallet=${wallet}`);
+      const data = await response.json();
+      document.getElementById("result").innerText = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
